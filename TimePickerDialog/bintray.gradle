@@ -1,7 +1,7 @@
 apply plugin: 'com.github.dcendents.android-maven'
 apply plugin: 'com.jfrog.bintray'
 
-group = PROJ_GROUP
+/*group = PROJ_GROUP
 version = PROJ_VERSION
 project.archivesBaseName = PROJ_ARTIFACTID
 
@@ -91,4 +91,4 @@ bintray {
 //        publicDownloadNumbers = true
         publish = true
     }
-}
+}*/
