@@ -7,7 +7,7 @@ import java.util.Calendar;
  */
 public class WheelCalendar {
 
-    public int year, month, day, hour, minute;
+    public int year, month, day, hour, minute,second;
 
     private boolean noRange;
 
@@ -29,6 +29,7 @@ public class WheelCalendar {
         day = calendar.get(Calendar.DAY_OF_MONTH);
         hour = calendar.get(Calendar.HOUR_OF_DAY);
         minute = calendar.get(Calendar.MINUTE);
+        second = calendar.get(Calendar.SECOND);
     }
 
     public boolean isNoRange() {

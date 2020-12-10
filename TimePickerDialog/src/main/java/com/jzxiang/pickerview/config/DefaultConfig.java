@@ -21,6 +21,7 @@ public class DefaultConfig {
     public static String DAY = "日";
     public static String HOUR = "时";
     public static String MINUTE = "分";
+    public static String SECOND = "秒";
 
 
 }

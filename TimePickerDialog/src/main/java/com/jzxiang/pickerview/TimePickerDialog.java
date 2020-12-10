@@ -125,6 +125,7 @@ public class TimePickerDialog extends DialogFragment implements View.OnClickList
         calendar.set(Calendar.DAY_OF_MONTH, mTimeWheel.getCurrentDay());
         calendar.set(Calendar.HOUR_OF_DAY, mTimeWheel.getCurrentHour());
         calendar.set(Calendar.MINUTE, mTimeWheel.getCurrentMinute());
+        calendar.set(Calendar.SECOND, mTimeWheel.getCurrentSecond());
 
         mCurrentMillSeconds = calendar.getTimeInMillis();
         if (mPickerConfig.mCallBack != null) {
@@ -229,7 +230,10 @@ public class TimePickerDialog extends DialogFragment implements View.OnClickList
             mPickerConfig.mMinute = minute;
             return this;
         }
-
+        public Builder setSecondText(String second){
+            mPickerConfig.mSecond = second;
+            return this;
+        }
         public Builder setCallBack(OnDateSetListener listener) {
             mPickerConfig.mCallBack = listener;
             return this;

@@ -1,5 +1,7 @@
 package com.jzxiang.pickerview.data.source;
 
+import android.util.Log;
+
 import com.jzxiang.pickerview.config.PickerConfig;
 import com.jzxiang.pickerview.data.WheelCalendar;
 import com.jzxiang.pickerview.utils.PickerContants;
@@ -12,7 +14,7 @@ import java.util.Calendar;
  */
 public class TimeRepository implements TimeDataSource {
     PickerConfig mPickerConfig;
-    WheelCalendar mCalendarMin, mCalendarMax;
+    WheelCalendar mCalendarMin, mCalendarMax,mCalendarCur;
 
     boolean mIsMinNoRange, mIsMaxNoRange;
 
@@ -20,6 +22,7 @@ public class TimeRepository implements TimeDataSource {
         mPickerConfig = pickerConfig;
         mCalendarMin = pickerConfig.mMinCalendar;
         mCalendarMax = pickerConfig.mMaxCalendar;
+        mCalendarCur = pickerConfig.mCurrentCalendar;
 
         mIsMinNoRange = mCalendarMin.isNoRange();
         mIsMaxNoRange = mCalendarMax.isNoRange();
@@ -36,7 +39,7 @@ public class TimeRepository implements TimeDataSource {
     @Override
     public int getMaxYear() {
         if (mIsMaxNoRange)
-            return getMinYear() + PickerContants.YEAR_COUNT;
+            return mCalendarCur.year+ PickerContants.YEAR_COUNT;
 
         return mCalendarMax.year;
     }
@@ -97,7 +100,7 @@ public class TimeRepository implements TimeDataSource {
     @Override
     public int getMinMinute(int year, int month, int day, int hour) {
         if (!mIsMinNoRange && Utils.isTimeEquals(mCalendarMin, year, month, day, hour))
-            return mCalendarMin.minute + 1;
+            return mCalendarMin.minute;
         else
             return PickerContants.MIN_MINUTE;
     }
@@ -108,6 +111,22 @@ public class TimeRepository implements TimeDataSource {
             return mCalendarMax.minute;
 
         return PickerContants.MAX_MINUTE;
+    }
+
+    @Override
+    public int getMinSecond(int year, int month, int day, int hour, int min) {
+        if (!mIsMinNoRange && Utils.isTimeEquals(mCalendarMin, year, month, day, hour,min))
+            return mCalendarMin.second+1;
+        else
+            return PickerContants.MIN_SECOND;
+    }
+
+    @Override
+    public int getMaxSecond(int year, int month, int day, int hour, int min) {
+        if (!mIsMaxNoRange && Utils.isTimeEquals(mCalendarMax, year, month, day, hour,min))
+            return mCalendarMax.second;
+
+        return PickerContants.MAX_SECOND;
     }
 
     @Override
@@ -128,6 +147,11 @@ public class TimeRepository implements TimeDataSource {
     @Override
     public boolean isMinHour(int year, int month, int day, int hour) {
         return Utils.isTimeEquals(mCalendarMin, year, month, day, hour);
+    }
+
+    @Override
+    public boolean isMinMin(int year, int month, int day, int hour, int min) {
+        return Utils.isTimeEquals(mCalendarMin, year, month, day, hour,min);
     }
 
 
