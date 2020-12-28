@@ -39,14 +39,14 @@ public interface TimeDataSource {
 
     boolean isMinHour(int year, int month, int day, int hour);
     boolean isMinMin(int year, int month, int day, int hour,int min);
+/*//
+   boolean isMaxYear(int year);
 //
-//    boolean isMaxYear(int year);
-//
-//    boolean isMaxMonth(int year, int month);
-//
-//    boolean isMaxDay(int year, int month, int day);
-//
-//    boolean isMaxMinute(int year, int month, int day, int hour);
+   boolean isMaxMonth(int year, int month);
+
+    boolean isMaxDay(int year, int month, int day);
+
+   boolean isMaxMinute(int year, int month, int day, int hour);*/
 
     WheelCalendar getDefaultCalendar();
 

@@ -116,7 +116,7 @@ public class TimeRepository implements TimeDataSource {
     @Override
     public int getMinSecond(int year, int month, int day, int hour, int min) {
         if (!mIsMinNoRange && Utils.isTimeEquals(mCalendarMin, year, month, day, hour,min))
-            return mCalendarMin.second+1;
+            return mCalendarMin.second;
         else
             return PickerContants.MIN_SECOND;
     }

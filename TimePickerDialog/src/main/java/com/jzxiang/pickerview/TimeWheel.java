@@ -199,7 +199,7 @@ public class TimeWheel {
         mMonthAdapter.setConfig(mPickerConfig);
         month.setViewAdapter(mMonthAdapter);
 
-        if (mRepository.isMinYear(curYear)) {
+        if (mRepository.isMinYear(curYear)||mRepository.getMaxYear()==curYear) {
             month.setCurrentItem(0, false);
         }
     }
@@ -221,7 +221,7 @@ public class TimeWheel {
         mDayAdapter.setConfig(mPickerConfig);
         day.setViewAdapter(mDayAdapter);
 
-        if (mRepository.isMinMonth(curYear, curMonth)) {
+        if (mRepository.isMinMonth(curYear, curMonth)||mRepository.getMaxMonth(curYear)==curMonth) {
             day.setCurrentItem(0, true);
         }
 
@@ -246,7 +246,7 @@ public class TimeWheel {
         mHourAdapter.setConfig(mPickerConfig);
         hour.setViewAdapter(mHourAdapter);
 
-        if (mRepository.isMinDay(curYear, curMonth, curDay))
+        if (mRepository.isMinDay(curYear, curMonth, curDay)||mRepository.getMaxDay(curYear,curMonth)==curDay)
             hour.setCurrentItem(0, false);
     }
 
@@ -266,7 +266,7 @@ public class TimeWheel {
         mMinuteAdapter.setConfig(mPickerConfig);
         minute.setViewAdapter(mMinuteAdapter);
 
-        if (mRepository.isMinHour(curYear, curMonth, curDay, curHour))
+        if (mRepository.isMinHour(curYear, curMonth, curDay, curHour)||mRepository.getMaxHour(curYear,curMonth,curDay)==curHour)
             minute.setCurrentItem(0, false);
     }
     void updateSeconds() {
@@ -286,7 +286,7 @@ public class TimeWheel {
         mSecondAdapter.setConfig(mPickerConfig);
         second.setViewAdapter(mSecondAdapter);
 
-        if (mRepository.isMinMin(curYear, curMonth, curDay, curHour,curMinute))
+        if (mRepository.isMinMin(curYear, curMonth, curDay, curHour,curMinute)||mRepository.getMaxMinute(curYear,curMonth,curDay,curHour)==curMinute)
             second.setCurrentItem(0, false);
     }
 
